@@ -12,6 +12,30 @@ public class BasicMember extends Member {
     public BasicMember() {
     }
 
+    public int getBookLimit() {
+        return bookLimit;
+    }
+
+    public void setBookLimit(int bookLimit) {
+        this.bookLimit = bookLimit;
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
+    }
+
+    public int getReturnDaysLimit() {
+        return returnDaysLimit;
+    }
+
+    public void setReturnDaysLimit(int returnDaysLimit) {
+        this.returnDaysLimit = returnDaysLimit;
+    }
+
     @Override
     public void details() {
         System.out.println("(A Basic member) Member ID :"+getID()+" User name :"+getUserName()+" Adress :"+getAddress()+" Phone Number :"+getPhoneNumber());

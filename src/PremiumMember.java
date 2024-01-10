@@ -11,6 +11,30 @@ public class PremiumMember extends Member{
 
     }
 
+    public int getBookLimit() {
+        return bookLimit;
+    }
+
+    public void setBookLimit(int bookLimit) {
+        this.bookLimit = bookLimit;
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
+    }
+
+    public int getReturnDaysLimit() {
+        return returnDaysLimit;
+    }
+
+    public void setReturnDaysLimit(int returnDaysLimit) {
+        this.returnDaysLimit = returnDaysLimit;
+    }
+
     public PremiumMember() {
     }
 

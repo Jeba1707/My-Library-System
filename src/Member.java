@@ -1,11 +1,13 @@
-public class Member {
+public abstract class Member {
     private static int lastId = 100;
     private int ID ;
     private String userName ;
     private String phoneNumber;
     private String Address;
     private String password;
-
+    private  int bookLimit;
+    private String membership;
+    private int returnDaysLimit;
 
     public Member(String userName, String phoneNumber, String address, String password) {
         this.userName = userName;
@@ -44,6 +46,34 @@ public class Member {
         return Address;
     }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public int getBookLimit() {
+        return bookLimit;
+    }
+
+    public void setBookLimit(int bookLimit) {
+        this.bookLimit = bookLimit;
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
+    }
+
+    public int getReturnDaysLimit() {
+        return returnDaysLimit;
+    }
+
+    public void setReturnDaysLimit(int returnDaysLimit) {
+        this.returnDaysLimit = returnDaysLimit;
+    }
+
     public void setAddress(String address) {
         Address = address;
     }
@@ -56,8 +86,6 @@ public class Member {
         this.password = password;
     }
 
-   public void details(){
-       System.out.println("Membere ID :"+getID()+" User name :"+getUserName()+" Adress :"+getAddress()+" Phone Number :"+getPhoneNumber());
-   }
+   public abstract void details();
 
 }
