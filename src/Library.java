@@ -6,25 +6,50 @@ import java.util.Objects;
 public class Library {
     List<Book> booklist ;
     List<Member> memberlist;
+    List<Member> basicMemberList;
+    List<Member> premiumMemberList;
     List<Book> cartList ;
     List<Book> borrowedBookList;
 
     List<Book> returnList;
 
     Borrow borrow;
-    List<Borrow> borrowHistory ;
-
+    List<Book> borrowHistory ;
+    List<Book> comicBookList;
+    List<Book> historyBookList;
+    List<Book> childrenBookList;
+    List<Book> ITbookList;
+    List<Book> mystryBookList;
 
     public Library() {
         this.booklist = new ArrayList<>();
         this.memberlist = new ArrayList<>();
-        this.cartList =  new ArrayList<>();
-        this.borrowedBookList =  new ArrayList<>();
-        this.returnList =  new ArrayList<>();
+        this.cartList = new ArrayList<>();
+        this.borrowedBookList = new ArrayList<>();
+        this.returnList = new ArrayList<>();
+        this.borrowHistory = new ArrayList<>();
+        this.comicBookList = new ArrayList<>();
+        this.historyBookList = new ArrayList<>();
+        this.childrenBookList = new ArrayList<>();
+        this.ITbookList = new ArrayList<>();
+        this.mystryBookList=new ArrayList<>();
+        this.basicMemberList=new ArrayList<>();
+        this.premiumMemberList=new ArrayList<>();
     }
 
     public void addBooks(Book book){
         booklist.add(book);
+        if(book instanceof Comic)
+            comicBookList.add(book);
+        else if (book instanceof History)
+            historyBookList.add(book);
+        else if (book instanceof ChildrenBook)
+            childrenBookList.add(book);
+        else if (book instanceof Mystry)
+            mystryBookList.add(book);
+         else
+                ITbookList.add(book);
+
     }
 
     public List<Book> getBooklist() {
@@ -35,9 +60,130 @@ public class Library {
             book.details();
         }
     }
+    public void displayComicBookList(){
+        for(Book book :comicBookList){
+            book.details();
+        }
+    }
+    public void displayITBookList(){
+        for(Book book :ITbookList){
+            book.details();
+        }
+    }
+    public void displayHistoryBookList(){
+        for(Book book :historyBookList){
+            book.details();
+        }
+    }
+    public void displayChildrenBookList(){
+        for(Book book :childrenBookList){
+            book.details();
+        }
+    }
+    public void displayMystryBookList(){
+        for(Book book :mystryBookList){
+            book.details();
+        }
+    }
+
+    public void setBooklist(List<Book> booklist) {
+        this.booklist = booklist;
+    }
+
+    public void setMemberlist(List<Member> memberlist) {
+        this.memberlist = memberlist;
+    }
+
+    public List<Member> getBasicMemberList() {
+        return basicMemberList;
+    }
+
+    public void setBasicMemberList(List<Member> basicMemberList) {
+        this.basicMemberList = basicMemberList;
+    }
+
+    public List<Member> getPremiumMemberList() {
+        return premiumMemberList;
+    }
+
+    public void setPremiumMemberList(List<Member> premiumMemberList) {
+        this.premiumMemberList = premiumMemberList;
+    }
+
+    public List<Book> getMystryBookList() {
+        return mystryBookList;
+    }
+
+    public void setMystryBookList(List<Book> mystryBookList) {
+        this.mystryBookList = mystryBookList;
+    }
+
+    public void setCartList(List<Book> cartList) {
+        this.cartList = cartList;
+    }
+
+    public void setBorrowedBookList(List<Book> borrowedBookList) {
+        this.borrowedBookList = borrowedBookList;
+    }
+
+    public void setReturnList(List<Book> returnList) {
+        this.returnList = returnList;
+    }
+
+    public Borrow getBorrow() {
+        return borrow;
+    }
+
+    public void setBorrow(Borrow borrow) {
+        this.borrow = borrow;
+    }
+
+    public List<Book> getBorrowHistory() {
+        return borrowHistory;
+    }
+
+    public void setBorrowHistory(List<Book> borrowHistory) {
+        this.borrowHistory = borrowHistory;
+    }
+
+    public List<Book> getComicBookList() {
+        return comicBookList;
+    }
+
+    public void setComicBookList(List<Book> comicBookList) {
+        this.comicBookList = comicBookList;
+    }
+
+    public List<Book> getHistoryBookList() {
+        return historyBookList;
+    }
+
+    public void setHistoryBookList(List<Book> historyBookList) {
+        this.historyBookList = historyBookList;
+    }
+
+    public List<Book> getChildrenBookList() {
+        return childrenBookList;
+    }
+
+    public void setChildrenBookList(List<Book> childrenBookList) {
+        this.childrenBookList = childrenBookList;
+    }
+
+    public List<Book> getITbookList() {
+        return ITbookList;
+    }
+
+    public void setITbookList(List<Book> ITbookList) {
+        this.ITbookList = ITbookList;
+    }
 
     public void addMember(Member member){
        memberlist.add(member);
+       if(member instanceof BasicMember)
+           basicMemberList.add(member);
+       else
+           premiumMemberList.add(member);
     }
     public List<Member> getMemberlist() {
       return memberlist;
@@ -47,8 +193,16 @@ public class Library {
            member.details();
        }
    }
-
-
+    public void displayBasicMemberList(){
+        for(Member member :basicMemberList){
+            member.details();
+        }
+    }
+    public void displayPremiumMemberList(){
+        for(Member member :premiumMemberList){
+            member.details();
+        }
+    }
     public List<Book> getBorrowedBookList() {
         return borrowedBookList;
     }

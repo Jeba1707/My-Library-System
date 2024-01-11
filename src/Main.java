@@ -19,13 +19,31 @@ public class Main {
         Book b7 = new Comic("B Comic book","Tasnim",123123,60);
 
 
-        library.booklist = List.of(b1,b2,b3,b4,b5,b6,b7);
+        library.addBooks(b1);
+        library.addBooks(b2);
+        library.addBooks(b3);
+        library.addBooks(b4);
+        library.addBooks(b5);
+        library.addBooks(b6);
+        library.addBooks(b7);
 
+        library.displayITBookList();
+
+        for(Book book :library.ITbookList)
+        {
+            book.setDiscount(10);
+        }
+        library.displayITBookList();
         Member member1 = new BasicMember("basicJeba","0162537","dhaka","jeba",v1);
         Member member2 = new PremiumMember("preJeba","0162537","dhaka","jeba",v2);
-        Member member3 = new BasicMember("basJeba","0162537","dhaka","jeba",v3);
+        Member member3 = new BasicMember("basicJebin","0162537","dhaka","jeba",v3);
+        Member member4 = new PremiumMember("PreJebin","0162537","dhaka","jeba",v1);
 
-        System.out.println(member3.getPassword());
+       library.addMember(member1);
+       library.addMember(member2);
+       library.addMember(member3);
+       library.addMember(member4);
+       library.displayBasicMemberList();
 
 
 
@@ -49,8 +67,7 @@ public class Main {
 //        library.returnbook(member2);
 //        b1.details();
 
-        //things to do :password encryption,main class,borrow and return history,discount in all/catagory/book,
-        // creat list of books by catagory /charge extra fee for late return
 
+//borrowBook number,return book number
     }
 }
