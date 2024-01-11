@@ -8,17 +8,29 @@ public abstract class Member {
     private  int bookLimit;
     private String membership;
     private int returnDaysLimit;
+   private Encryptor encryptor;
 
-    public Member(String userName, String phoneNumber, String address, String password) {
+
+    public Encryptor getEncryptor() {
+        return encryptor;
+    }
+
+    public Member(String userName, String phoneNumber, String address, String password, Encryptor encryptor) {
+        this.encryptor=encryptor;
         this.userName = userName;
         this.phoneNumber = phoneNumber;
         Address = address;
-        this.password = password;
+        setPassword(password);
         this.ID = ++lastId;
+
     }
 
     public Member() {
 
+    }
+
+    public void setEncryptor(Encryptor encryptor) {
+        this.encryptor = encryptor;
     }
 
     public int getID() {
@@ -83,9 +95,11 @@ public abstract class Member {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = encryptor.encryption(password);
     }
 
    public abstract void details();
+
+
 
 }

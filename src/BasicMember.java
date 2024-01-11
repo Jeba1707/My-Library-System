@@ -2,9 +2,11 @@ public class BasicMember extends Member {
     private  int bookLimit;
     private String membership;
     private int returnDaysLimit;
-    public BasicMember(String userName, String phoneNumber, String address, String password) {
-        super(userName, phoneNumber, address, password);
-        this.bookLimit = 5;
+
+
+    public BasicMember(String userName, String phoneNumber, String address, String password, Encryptor encryptor) {
+        super(userName, phoneNumber, address, password, encryptor);
+        this.bookLimit = 5 ;
         this.membership = "Basic";
         this.returnDaysLimit = 12;
     }

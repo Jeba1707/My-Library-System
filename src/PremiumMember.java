@@ -3,8 +3,8 @@ public class PremiumMember extends Member{
     private String membership;
     private int returnDaysLimit;
 
-    public PremiumMember(String userName, String phoneNumber, String address, String password) {
-        super(userName, phoneNumber, address, password);
+    public PremiumMember(String userName, String phoneNumber, String address, String password, Encryptor encryptor) {
+        super(userName, phoneNumber, address, password, encryptor);
         this.bookLimit = 7 ;
         this.membership = "Premium";
         this.returnDaysLimit = 15;
