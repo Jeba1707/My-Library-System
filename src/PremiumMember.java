@@ -8,7 +8,6 @@ public class PremiumMember extends Member{
         this.bookLimit = 7 ;
         this.membership = "Premium";
         this.returnDaysLimit = 15;
-
     }
 
     public int getBookLimit() {

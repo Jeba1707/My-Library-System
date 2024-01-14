@@ -9,22 +9,24 @@ public class Library {
     List<Member> basicMemberList;
     List<Member> premiumMemberList;
     List<Book> cartList ;
+    List<Book> cartList2 ;
     List<Book> borrowedBookList;
 
     List<Book> returnList;
 
     Borrow borrow;
+    Borrow borrow2;
     List<Book> borrowHistory ;
     List<Book> comicBookList;
     List<Book> historyBookList;
     List<Book> childrenBookList;
     List<Book> ITbookList;
     List<Book> mystryBookList;
-
+    int previousBorrowedBookNumber =0;
     public Library() {
         this.booklist = new ArrayList<>();
         this.memberlist = new ArrayList<>();
-        this.cartList = new ArrayList<>();
+
         this.borrowedBookList = new ArrayList<>();
         this.returnList = new ArrayList<>();
         this.borrowHistory = new ArrayList<>();
@@ -35,6 +37,8 @@ public class Library {
         this.mystryBookList=new ArrayList<>();
         this.basicMemberList=new ArrayList<>();
         this.premiumMemberList=new ArrayList<>();
+        this.cartList = new ArrayList<>();
+        this.cartList2 = new ArrayList<>();
     }
 
     public void addBooks(Book book){
@@ -234,7 +238,21 @@ public class Library {
     }
 
     public void addToCart(int ISBN) {
-    int count = 0;
+        int count = 0;
+        if(previousBorrowedBookNumber>=1){
+
+
+            for (Book book : booklist) {
+                if (book.getISBN() == ISBN) {
+                    cartList2.add(book);
+                    count++;
+                }
+            }if(count>0)
+                System.out.println("ISBN "+ISBN+" Added to cart successfull.");
+            else
+                System.out.println("Sorry ISBN "+ISBN+"not found");
+        }
+  else  {
         for (Book book : booklist) {
             if (book.getISBN() == ISBN) {
                 cartList.add(book);
@@ -243,7 +261,7 @@ public class Library {
         }if(count>0)
                 System.out.println("ISBN "+ISBN+" Added to cart successfull.");
             else
-                System.out.println("Sorry ISBN "+ISBN+"not found");
+                System.out.println("Sorry ISBN "+ISBN+"not found");}
         }
 
     public List<Book> getCartList() {
@@ -255,10 +273,45 @@ public class Library {
 
         }
     }
+    public List<Book> getCartList2() {
+        return cartList2;
+    }
+    public void displayCartList2(){
+        for(Book book :cartList2){
+            book.details();
+
+        }
+    }
+
+    int newborrowbook;
+    int  extrabook;
     public void borrow(Member member){
-        if(cartList.size()<=member.getBookLimit()){
-        this.borrow= new Borrow();
+
+        if(previousBorrowedBookNumber>0){
+            newborrowbook = member.getBookLimit()-previousBorrowedBookNumber;
+            this.borrow2= new Borrow(member);
+
+            if(cartList2.size()<=newborrowbook){
+            for(Book book :cartList2){
+                previousBorrowedBookNumber ++;
+                book.setAvailable(false);
+                borrowedBookList.add(book);
+                borrow2.addBooks(book);
+            } System.out.println("Borrow successfull");
+            borrow2.setMember(member);
+            borrow2.membershipSpecialize();
+            //borrow.totalFee();
+            borrow2.borrowDetails();}
+            else
+            { extrabook= cartList2.size()-newborrowbook;
+                System.out.println("You have "+newborrowbook+"books limit after previous borrow.");
+                System.out.println("Remove "+extrabook+"book or return your previous borrowd books.");}
+
+        }
+        else if(cartList.size()<=member.getBookLimit()){
+        this.borrow= new Borrow(member);
         for(Book book :cartList){
+            previousBorrowedBookNumber++;
             book.setAvailable(false);
             borrowedBookList.add(book);
             borrow.addBooks(book);
@@ -269,8 +322,10 @@ public class Library {
         borrow.membershipSpecialize();
         //borrow.totalFee();
        borrow.borrowDetails();}
+
         else
-            System.out.println("you have crossed your book limit.");
+            { System.out.println("you have crossed your book limit.");}
+
     }
 
 
@@ -281,6 +336,11 @@ public class Library {
         System.out.println("return successfull");
     }
 
+    public void borrowHistory(Member member){
+       borrow.borrowDetails();
+       borrow2.borrowDetails();
+
+    }
 }
 
 

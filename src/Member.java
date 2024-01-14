@@ -15,8 +15,8 @@ public abstract class Member {
         return encryptor;
     }
 
-    public Member(String userName, String phoneNumber, String address, String password, Encryptor encryptor) {
-        this.encryptor=encryptor;
+    public Member(String userName, String phoneNumber, String address, String password,Encryptor encryptor) {
+       setEncryptor(encryptor);
         this.userName = userName;
         this.phoneNumber = phoneNumber;
         Address = address;

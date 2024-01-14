@@ -3,7 +3,6 @@ public class BasicMember extends Member {
     private String membership;
     private int returnDaysLimit;
 
-
     public BasicMember(String userName, String phoneNumber, String address, String password, Encryptor encryptor) {
         super(userName, phoneNumber, address, password, encryptor);
         this.bookLimit = 5 ;

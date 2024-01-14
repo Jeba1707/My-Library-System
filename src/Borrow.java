@@ -12,7 +12,7 @@ public class Borrow {
     private Double totalFee;
     private LocalDate returnDate;
 
-    public Borrow() {
+    public Borrow(Member member) {
         this.books = new ArrayList<>();
         this.borrowedDate = LocalDate.now();
         this.totalFee = 0.0;
