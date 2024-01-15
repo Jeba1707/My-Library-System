@@ -5,4 +5,7 @@ public class History extends Book{
         super(title, author, ISBN, borrowFee);
         this.bookCatagory = "History";
     }
+    public History() {
+
+    }
 }

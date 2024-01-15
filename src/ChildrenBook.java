@@ -4,4 +4,7 @@ public class ChildrenBook extends Book{
         super(title, author, ISBN, borrowFee);
         this.bookCatagory = "ChildrenBook";
     }
+    public ChildrenBook() {
+
+    }
 }

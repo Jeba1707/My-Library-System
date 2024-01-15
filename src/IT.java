@@ -4,4 +4,7 @@ public class IT extends Book{
         super(title, author, ISBN, borrowFee);
         this.bookCatagory="IT";
     }
+    public IT() {
+
+    }
 }

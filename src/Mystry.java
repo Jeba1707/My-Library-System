@@ -4,4 +4,7 @@ public class Mystry extends Book{
         super(title, author, ISBN, borrowFee);
         this.bookCatagory = "Mystry";
     }
+    public Mystry() {
+
+    }
 }

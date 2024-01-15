@@ -45,6 +45,7 @@ public class Library {
         booklist.add(book);
         if(book instanceof Comic)
             comicBookList.add(book);
+
         else if (book instanceof History)
             historyBookList.add(book);
         else if (book instanceof ChildrenBook)
@@ -224,17 +225,60 @@ public class Library {
         }
     }
     public void searchBook(String title){
+        int count = 1;
         for(Book book :booklist){
             if(book.getTitle().equalsIgnoreCase(title)){
                 book.details();
-
+                count++;
                 break;
             }
-            else{
-                System.out.println("Book not found");
+        }
+        if (count==1)
+            System.out.println("Book not found");
 
+
+    }
+    public void removeBook(int ISBN){
+        int removecount = 1;
+        for(Book book :booklist){
+            if(book.getISBN()==ISBN){
+                booklist.remove(book);
+               removecount++;
+               break;
             }
         }
+        if (removecount>1)
+            System.out.println("book removed successfull");
+        else
+            System.out.println("Book not found");   }
+
+    public void updateFee(int ISBN,int newfee){
+        int count = 1;
+        for(Book book :booklist){
+            if(book.getISBN()==ISBN){
+                book.setBorrowFee(newfee);
+
+                count++;
+                break;
+            }
+        }
+        if (count>1)
+            System.out.println("Fee updated successfull");
+        else
+            System.out.println("Book not found");
+    } public void discount(int ISBN,int rate){
+        int count = 1;
+        for(Book book :booklist){
+            if(book.getISBN()==ISBN){
+                book.setDiscount(rate);
+                count++;
+                break;
+            }
+        }
+        if (count>1)
+            System.out.println("discount aplied successfull");
+        else
+            System.out.println("Book not found");
     }
 
     public void addToCart(int ISBN) {
